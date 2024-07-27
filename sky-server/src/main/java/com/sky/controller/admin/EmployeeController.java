@@ -95,7 +95,7 @@ public class EmployeeController {
      * @return
      */
     @GetMapping("page")
-    @ApiOperation("")
+    @ApiOperation("员工分页查询")
     public Result<PageResult> pageQuery(EmployeePageQueryDTO employeePageQueryDTO){
         log.info("Employee pagination query, parameters are: {}", employeePageQueryDTO);
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
