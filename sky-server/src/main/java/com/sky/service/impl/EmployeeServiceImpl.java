@@ -71,7 +71,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void save(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
 
-        //对象属性拷贝
+        //对象属性拷贝(copy, paste)
         BeanUtils.copyProperties(employeeDTO,employee);
 
         //设置账号的状态，默认正常状态1 表示正常，0表示锁定
@@ -118,6 +118,35 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeMapper.update(employee);
 
 
+    }
+
+    /**
+     * 修改员工根据主键id回显
+     * @param id
+     * @return
+     */
+    @Override
+    public Employee showEmpById(Long id) {
+        Employee employee = employeeMapper.showEmpById(id);
+        employee.setPassword("******");
+        return employee;
+    }
+
+    /**
+     * 编辑员工信息
+     * @param employeeDTO
+     */
+    @Override
+    public void modifyEmp(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO,employee);
+        //修改时间
+        employee.setUpdateTime(LocalDateTime.now());
+        //修改人id，通过threadLocal中存储的id
+        employee.setUpdateUser(BaseContext.getCurrentId());
+
+
+        employeeMapper.update(employee);
     }
 
 }
