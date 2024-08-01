@@ -1,8 +1,11 @@
 package com.sky.service;
 
+import com.sky.annotation.AutoFill;
 import com.sky.dto.DishDTO;
 import com.sky.dto.DishPageQueryDTO;
+import com.sky.entity.Dish;
 import com.sky.result.PageResult;
+import com.sky.vo.DishVO;
 
 import java.util.List;
 
@@ -20,7 +23,7 @@ public interface DishService {
      * 新增菜品和对应的口味
      * @param dishDTO
      */
-    public void saveWithFlavor(DishDTO dishDTO);
+    void saveWithFlavor(DishDTO dishDTO);
 
     /**
      * 菜品分页查询
@@ -34,4 +37,16 @@ public interface DishService {
      * @param ids
      */
     void deleteDishesBatch(List<Long> ids);
+
+    /**
+     * 根据菜品id查询
+     * @param id
+     */
+    DishVO getDishWithFlavor(Long id);
+
+    /**
+     * 根据菜品id修改菜品和口味信息
+     * @param dishDTO
+     */
+    void modifyDishesWithFlavor(DishDTO dishDTO);
 }

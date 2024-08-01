@@ -3,9 +3,17 @@
 <mapper namespace="com.sky.mapper.DishFlavorMapper">
 
     <insert id="insertBatch">
-        INSERT into dish_flavor (dish_id,name,value) VALUES 
+        INSERT into dish_flavor (dish_id,name,value) VALUES
         <foreach collection="flavors" item="df" separator=",">
             (#{df.dishId},#{df.name},#{df.value})
         </foreach>
     </insert>
+    <update id="modifyDishFlavor">
+        update dish_flavor
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="value != null"> value = #{value}</if>
+        </set>
+        where id = #{dish_id}
+    </update>
 </mapper>

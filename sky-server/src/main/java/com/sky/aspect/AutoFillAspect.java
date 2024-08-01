@@ -59,8 +59,6 @@ public class AutoFillAspect {
         OperationType operationType = autoFill.value();
 
 
-
-
         //2获取到当前被拦截的方法的参数--实体对象，employee dish...
         Object[] args = joinPoint.getArgs();
         if(args == null || args.length == 0){
