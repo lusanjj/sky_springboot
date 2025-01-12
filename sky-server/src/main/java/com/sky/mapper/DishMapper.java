@@ -41,7 +41,7 @@ public interface DishMapper {
     /**
      * 根据菜品id得到菜品信息
      * @param id
-     * @return
+     * @return=
      */
     @Select("select * from dish where id = #{id}")
     Dish getByDishId(Long id);
