@@ -10,12 +10,13 @@ import java.lang.annotation.Target;
 /**
  * ClassName: AutoFill
  * Package:com.sky.annotaion
- * Description: 自定义注解，用于标识某个方法需要进行功能字段自动填充处理
+ * Description: 自定义注解，用于标识某个方法需要进行功能字段自动填充处理解决冗余代码
  *
  * @Author Shane Liu
  * @Create 2024-07-27 10:35 p.m.
  * @Version 1.0
  */
+//Target 指定注解加在什么位置，在这里是只能在方法上
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AutoFill {

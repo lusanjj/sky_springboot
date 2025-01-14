@@ -31,6 +31,8 @@ import static com.sky.constant.AutoFillConstant.*;
 @Slf4j
 public class AutoFillAspect {
     /*
+        切面 = 切入点 + 通知
+
         切入点，对哪些类的哪些方法进行拦截。
         * com.sky.mapper.*.*(..))
         任何返回类型 包名.任何类，任何方法名，任意参数。

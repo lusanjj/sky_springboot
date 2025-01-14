@@ -80,13 +80,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         //设置密码，默认密码12356.加密
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
 
-        //设置当前记录的创建时间和修改时间
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-
-        //设置当前记录创建人id和修改人id, get the id from the ThreadLocal
-        employee.setCreateUser(BaseContext.getCurrentId());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+        //使用了aop来实现自动公共赋值，解耦冗余代码
+//        //设置当前记录的创建时间和修改时间
+//        employee.setCreateTime(LocalDateTime.now());
+//        employee.setUpdateTime(LocalDateTime.now());
+//
+//        //设置当前记录创建人id和修改人id, get the id from the ThreadLocal
+//        employee.setCreateUser(BaseContext.getCurrentId());
+//        employee.setUpdateUser(BaseContext.getCurrentId());
 
         employeeMapper.insert(employee);
     }
@@ -145,10 +146,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void modifyEmp(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO,employee);
-        //修改时间
-        employee.setUpdateTime(LocalDateTime.now());
-        //修改人id，通过threadLocal中存储的id
-        employee.setUpdateUser(BaseContext.getCurrentId());
+
+        //使用了aop来实现自动公共赋值，解耦冗余代码
+        
+//        //修改时间
+//        employee.setUpdateTime(LocalDateTime.now());
+//        //修改人id，通过threadLocal中存储的id
+//        employee.setUpdateUser(BaseContext.getCurrentId());
 
 
         employeeMapper.update(employee);

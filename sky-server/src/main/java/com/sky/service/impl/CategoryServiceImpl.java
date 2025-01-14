@@ -47,6 +47,7 @@ public class CategoryServiceImpl implements CategoryService {
         //分类状态默认为禁用状态0
         category.setStatus(StatusConstant.DISABLE);
 
+        //使用了aop来实现自动公共赋值，解耦冗余代码
         //设置创建时间、修改时间、创建人、修改人
 //        category.setCreateTime(LocalDateTime.now());
 //        category.setUpdateTime(LocalDateTime.now());
@@ -99,6 +100,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = new Category();
         BeanUtils.copyProperties(categoryDTO,category);
 
+        //使用了aop来实现自动公共赋值，解耦冗余代码
         //设置修改时间、修改人
 //        category.setUpdateTime(LocalDateTime.now());
 //        category.setUpdateUser(BaseContext.getCurrentId());
@@ -115,6 +117,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = Category.builder()
                 .id(id)
                 .status(status)
+                //使用了aop来实现自动公共赋值，解耦冗余代码
 //                .updateTime(LocalDateTime.now())
 //                .updateUser(BaseContext.getCurrentId())
                 .build();
