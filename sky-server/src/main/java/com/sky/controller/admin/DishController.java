@@ -35,6 +35,19 @@ public class DishController {
     @Autowired
     private DishService dishService;
 
+    /**
+     * 启售停售菜品状态
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("status/{status}")
+    @ApiOperation("启售和停售菜品状态")
+    public Result enableOrDisable(@PathVariable Integer status, Long id){
+        log.info("启售停售菜品状态：{}，{}",status,id);
+        dishService.enableOrDisable(status,id);
+        return Result.success();
+    }
 
     /**
      * 新增菜品
